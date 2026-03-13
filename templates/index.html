@@ -330,6 +330,105 @@
 
         .veredikto-footer strong { font-weight: 800; }
 
+        /* Ponte Brasil card */
+        .ponte-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid var(--accent);
+            text-align: center;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ponte-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,156,59,0.05) 0%, rgba(254,223,0,0.05) 50%, rgba(0,39,118,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .ponte-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .ponte-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        .ponte-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        .ponte-detail {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Dominio cards */
+        .dominio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .dominio-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .dominio-card:hover { transform: translateY(-2px); }
+
+        .dominio-filme {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .dominio-count {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .dominio-cats { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+        .cat-badge {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--border-strong);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Sub-section title */
+        .sub-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-primary);
+        }
+
+        .sub-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
         /* Hidden section */
         .section-content { display: none; }
         .section-content.active { display: block; }
@@ -340,7 +439,9 @@
             .section { padding: 1.5rem 1rem; }
             .section-title { font-size: 1.3rem; }
             .highlights { grid-template-columns: 1fr; }
+            .dominio-grid { grid-template-columns: 1fr; }
             .theme-toggle { top: 0.8rem; right: 0.8rem; width: 35px; height: 35px; }
+            .nav { flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -359,6 +460,7 @@
     <!-- Nav -->
     <nav class="nav">
         <a class="nav-pill active" onclick="showSection('critica')" id="nav-critica">Crítica vs Público</a>
+        <a class="nav-pill" onclick="showSection('extras')" id="nav-extras">Por Dentro dos Números</a>
         <a class="nav-pill" onclick="showSection('brasil')" id="nav-brasil">Brasil no Oscar</a>
     </nav>
 
@@ -379,7 +481,30 @@
         </div>
     </div>
 
-    <!-- Seção 2: Brasil no Oscar -->
+    <!-- Seção 2: Por Dentro dos Números -->
+    <div class="section-content" id="section-extras">
+        <div class="section">
+            <div class="section-label">Por dentro</div>
+            <h2 class="section-title">Por Dentro dos Números</h2>
+            <p class="section-desc">Onde a crítica e o público do Rotten Tomatoes discordam entre si — e quem domina o baile das indicações</p>
+
+            <h3 class="sub-title">Crítica vs Audiência</h3>
+            <p class="sub-desc">O gap entre a nota dos críticos e a nota da audiência dentro do Rotten Tomatoes. Verde = público gostou mais. Vermelho = crítica gostou mais.</p>
+
+            <div class="chart-container">
+                {{ audience_chart_js }}
+            </div>
+
+            <h3 class="sub-title">Quem domina o baile</h3>
+            <p class="sub-desc">Filmes que aparecem em mais de uma categoria de indicação</p>
+
+            <div class="dominio-grid">
+                {{ dominio_html }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção 3: Brasil no Oscar -->
     <div class="section-content" id="section-brasil">
         <div class="section">
             <div class="section-label">Entregável 2</div>
@@ -393,6 +518,8 @@
             <div class="brasil-stats">
                 {{ brasil_stats_html }}
             </div>
+
+            {{ ponte_brasil_html }}
         </div>
     </div>
 
@@ -406,10 +533,6 @@
             Acompanhe filmes, séries e games no <strong>Veredikto</strong> →
         </a>
     </footer>
-
-    <!-- Plotly chart data -->
-    {{ scatter_chart_js }}
-    {{ brasil_chart_js }}
 
     <script>
         // Theme toggle
@@ -436,6 +559,7 @@
             };
             Plotly.relayout('scatter-chart', layoutUpdate);
             Plotly.relayout('brasil-chart', layoutUpdate);
+            Plotly.relayout('audience-chart', layoutUpdate);
         }
 
         // Section toggle
@@ -451,6 +575,7 @@
         if (saved) {
             document.documentElement.setAttribute('data-theme', saved);
             document.getElementById('themeBtn').textContent = saved === 'light' ? '☀️' : '🌙';
+            updatePlotlyTheme(saved);
         }
     </script>
 </body>
