@@ -287,6 +287,49 @@
             text-decoration: none;
         }
 
+        /* Veredikto badge (hero) */
+        .veredikto-badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.35rem 1rem;
+            background: var(--border-strong);
+            border: 1px solid var(--border-strong);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .veredikto-badge:hover {
+            background: var(--accent-glow);
+            transform: scale(1.05);
+        }
+
+        .veredikto-badge strong { color: var(--accent-light); }
+
+        /* Veredikto CTA (footer) */
+        .veredikto-footer {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.5rem 1.2rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .veredikto-footer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .veredikto-footer strong { font-weight: 800; }
+
         /* Hidden section */
         .section-content { display: none; }
         .section-content.active { display: block; }
@@ -308,6 +351,9 @@
         <div class="hero-emoji">🏆</div>
         <h1 class="hero-title">Oscar 2026</h1>
         <p class="hero-subtitle">Os dados por trás da 98ª cerimônia</p>
+        <a href="https://www.veredikto.com" target="_blank" class="veredikto-badge">
+            por <strong>Veredikto</strong>
+        </a>
     </header>
 
     <!-- Nav -->
@@ -356,6 +402,9 @@
             Dados: Wikipedia, IMDb, Rotten Tomatoes<br>
             Feito com Python, Plotly e ☕ — Oscar 2026, 98ª cerimônia
         </p>
+        <a href="https://www.veredikto.com" target="_blank" class="veredikto-footer">
+            Acompanhe filmes, séries e games no <strong>Veredikto</strong> →
+        </a>
     </footer>
 
     <!-- Plotly chart data -->
