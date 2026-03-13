@@ -127,8 +127,8 @@ def build_scatter_chart(df: pd.DataFrame) -> str:
             x=0.5,
             font=dict(size=11),
         ),
-        margin=dict(l=60, r=20, t=50, b=60),
-        height=500,
+        margin=dict(l=50, r=15, t=50, b=50),
+        height=420,
         hoverlabel=dict(
             bgcolor=COLORS["bg_dark"],
             font_size=12,
@@ -136,7 +136,8 @@ def build_scatter_chart(df: pd.DataFrame) -> str:
         ),
     )
 
-    return fig.to_html(full_html=False, include_plotlyjs=False, div_id="scatter-chart")
+    config = {"responsive": True, "displayModeBar": False}
+    return fig.to_html(full_html=False, include_plotlyjs=False, div_id="scatter-chart", config=config)
 
 
 def build_brasil_chart(df: pd.DataFrame) -> str:
@@ -220,12 +221,13 @@ def build_brasil_chart(df: pd.DataFrame) -> str:
             x=0.5,
             font=dict(size=11),
         ),
-        margin=dict(l=20, r=20, t=50, b=60),
-        height=400,
+        margin=dict(l=15, r=15, t=50, b=50),
+        height=350,
         bargap=0.3,
     )
 
-    return fig.to_html(full_html=False, include_plotlyjs=False, div_id="brasil-chart")
+    config = {"responsive": True, "displayModeBar": False}
+    return fig.to_html(full_html=False, include_plotlyjs=False, div_id="brasil-chart", config=config)
 
 
 def build_highlights_html(df: pd.DataFrame) -> str:
@@ -316,8 +318,8 @@ def build_audience_gap_chart(df: pd.DataFrame) -> str:
             gridcolor=COLORS["grid_dark"],
             color=COLORS["text_dark"],
         ),
-        margin=dict(l=140, r=20, t=20, b=50),
-        height=380,
+        margin=dict(l=120, r=15, t=20, b=45),
+        height=360,
         hoverlabel=dict(
             bgcolor=COLORS["bg_dark"],
             font_size=12,
@@ -325,7 +327,8 @@ def build_audience_gap_chart(df: pd.DataFrame) -> str:
         ),
     )
 
-    return fig.to_html(full_html=False, include_plotlyjs=False, div_id="audience-chart")
+    config = {"responsive": True, "displayModeBar": False}
+    return fig.to_html(full_html=False, include_plotlyjs=False, div_id="audience-chart", config=config)
 
 
 def build_ponte_brasil_html(df_ratings: pd.DataFrame) -> str:
