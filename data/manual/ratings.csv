@@ -1,27 +1,26 @@
 filme,filme_en,categoria,rt_score,imdb_score,rt_audience
-Anora,Anora,Melhor Filme,95,7.7,81
-The Brutalist,The Brutalist,Melhor Filme,89,7.4,72
-A Complete Unknown,A Complete Unknown,Melhor Filme,92,7.5,91
-Conclave,Conclave,Melhor Filme,93,7.6,85
-Dune: Part Two,Dune: Part Two,Melhor Filme,92,8.5,95
-Emilia Pérez,Emilia Pérez,Melhor Filme,78,5.7,24
-I'm Still Here,I'm Still Here,Melhor Filme,97,7.8,88
-Nickel Boys,Nickel Boys,Melhor Filme,94,6.3,44
-The Substance,The Substance,Melhor Filme,90,7.2,70
-Wicked,Wicked,Melhor Filme,88,7.6,95
-Brady Corbet,Brady Corbet,Melhor Diretor,89,7.4,72
-Sean Baker,Sean Baker,Melhor Diretor,95,7.7,81
-James Mangold,James Mangold,Melhor Diretor,92,7.5,91
-Jacques Audiard,Jacques Audiard,Melhor Diretor,78,5.7,24
-Coralie Fargeat,Coralie Fargeat,Melhor Diretor,90,7.2,70
-Walter Salles,Walter Salles,Melhor Diretor,97,7.8,88
-Adrien Brody,Adrien Brody,Melhor Ator,89,7.4,72
-Timothée Chalamet,Timothée Chalamet,Melhor Ator,92,7.5,91
-Colman Domingo,Colman Domingo,Melhor Ator,72,6.0,46
-Ralph Fiennes,Ralph Fiennes,Melhor Ator,93,7.6,85
-Sebastian Stan,Sebastian Stan,Melhor Ator,75,6.6,52
-Cynthia Erivo,Cynthia Erivo,Melhor Atriz,88,7.6,95
-Karla Sofía Gascón,Karla Sofía Gascón,Melhor Atriz,78,5.7,24
-Mikey Madison,Mikey Madison,Melhor Atriz,95,7.7,81
-Demi Moore,Demi Moore,Melhor Atriz,90,7.2,70
-Fernanda Torres,Fernanda Torres,Melhor Atriz,97,7.8,88
+Sinners,Sinners,Melhor Filme,97,7.5,96
+The Secret Agent,The Secret Agent,Melhor Filme,98,7.3,82
+Sentimental Value,Sentimental Value,Melhor Filme,96,7.8,97
+Train Dreams,Train Dreams,Melhor Filme,94,7.5,88
+One Battle After Another,One Battle After Another,Melhor Filme,94,7.7,88
+Marty Supreme,Marty Supreme,Melhor Filme,93,7.8,82
+Bugonia,Bugonia,Melhor Filme,87,7.4,78
+Hamnet,Hamnet,Melhor Filme,87,7.9,92
+Frankenstein,Frankenstein,Melhor Filme,85,7.4,95
+F1,F1: The Movie,Melhor Filme,82,7.6,97
+Chloé Zhao,Hamnet,Melhor Diretor,87,7.9,92
+Josh Safdie,Marty Supreme,Melhor Diretor,93,7.8,82
+Paul Thomas Anderson,One Battle After Another,Melhor Diretor,94,7.7,88
+Joachim Trier,Sentimental Value,Melhor Diretor,96,7.8,97
+Ryan Coogler,Sinners,Melhor Diretor,97,7.5,96
+Timothée Chalamet,Marty Supreme,Melhor Ator,93,7.8,82
+Leonardo DiCaprio,One Battle After Another,Melhor Ator,94,7.7,88
+Ethan Hawke,Blue Moon,Melhor Ator,90,6.8,80
+Michael B. Jordan,Sinners,Melhor Ator,97,7.5,96
+Wagner Moura,The Secret Agent,Melhor Ator,98,7.3,82
+Jessie Buckley,Hamnet,Melhor Atriz,87,7.9,92
+Rose Byrne,If I Had Legs I'd Kick You,Melhor Atriz,92,6.6,65
+Kate Hudson,Song Sung Blue,Melhor Atriz,77,7.3,98
+Renate Reinsve,Sentimental Value,Melhor Atriz,96,7.8,97
+Emma Stone,Bugonia,Melhor Atriz,87,7.4,78

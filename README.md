@@ -1,10 +1,10 @@
-# Oscar 2025 — Os dados por trás da 97ª cerimônia
+# Oscar 2026 — Os dados por trás da 98ª cerimônia
 
-Site interativo com duas visualizações sobre o Oscar 2025:
+Site interativo com duas visualizações sobre o Oscar 2026:
 
 **Crítica vs Público** — Scatter plot cruzando notas do Rotten Tomatoes (crítica) com IMDb (público) dos indicados a Melhor Filme, Diretor, Ator e Atriz. Identifica o filme mais consensual, mais divisivo, superestimado e subestimado pela crítica.
 
-**O Brasil no Oscar** — Timeline de todas as 55 submissões brasileiras ao prêmio de Melhor Filme Internacional desde 1960, incluindo a vitória histórica de *Ainda Estou Aqui* (2025).
+**O Brasil no Oscar** — Timeline de todas as submissões brasileiras ao prêmio de Melhor Filme Internacional desde 1960, incluindo a vitória histórica de *Ainda Estou Aqui* (2025).
 
 ## Stack
 
