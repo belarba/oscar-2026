@@ -1,0 +1,27 @@
+filme,filme_en,categoria,rt_score,imdb_score,rt_audience,imdb_norm,diff_critica_publico,diff_abs,media_geral,rank_mais_divisivo,rank_mais_consensual,classificacao
+Anora,Anora,Melhor Filme,95,7.7,81,77.0,18.0,18.0,86.0,10,16,Superestimado pela crítica
+The Brutalist,The Brutalist,Melhor Filme,89,7.4,72,74.0,15.0,15.0,81.5,20,7,Consensual
+A Complete Unknown,A Complete Unknown,Melhor Filme,92,7.5,91,75.0,17.0,17.0,83.5,16,11,Superestimado pela crítica
+Conclave,Conclave,Melhor Filme,93,7.6,85,76.0,17.0,17.0,84.5,16,11,Superestimado pela crítica
+Dune: Part Two,Dune: Part Two,Melhor Filme,92,8.5,95,85.0,7.0,7.0,88.5,26,1,Consensual
+Emilia Pérez,Emilia Pérez,Melhor Filme,78,5.7,24,57.0,21.0,21.0,67.5,3,24,Superestimado pela crítica
+I'm Still Here,I'm Still Here,Melhor Filme,97,7.8,88,78.0,19.0,19.0,87.5,6,21,Superestimado pela crítica
+Nickel Boys,Nickel Boys,Melhor Filme,94,6.3,44,63.0,31.0,31.0,78.5,1,26,Superestimado pela crítica
+The Substance,The Substance,Melhor Filme,90,7.2,70,72.0,18.0,18.0,81.0,10,16,Superestimado pela crítica
+Wicked,Wicked,Melhor Filme,88,7.6,95,76.0,12.0,12.0,82.0,23,4,Consensual
+Brady Corbet,Brady Corbet,Melhor Diretor,89,7.4,72,74.0,15.0,15.0,81.5,20,7,Consensual
+Sean Baker,Sean Baker,Melhor Diretor,95,7.7,81,77.0,18.0,18.0,86.0,10,16,Superestimado pela crítica
+James Mangold,James Mangold,Melhor Diretor,92,7.5,91,75.0,17.0,17.0,83.5,16,11,Superestimado pela crítica
+Jacques Audiard,Jacques Audiard,Melhor Diretor,78,5.7,24,57.0,21.0,21.0,67.5,3,24,Superestimado pela crítica
+Coralie Fargeat,Coralie Fargeat,Melhor Diretor,90,7.2,70,72.0,18.0,18.0,81.0,10,16,Superestimado pela crítica
+Walter Salles,Walter Salles,Melhor Diretor,97,7.8,88,78.0,19.0,19.0,87.5,6,21,Superestimado pela crítica
+Adrien Brody,Adrien Brody,Melhor Ator,89,7.4,72,74.0,15.0,15.0,81.5,20,7,Consensual
+Timothée Chalamet,Timothée Chalamet,Melhor Ator,92,7.5,91,75.0,17.0,17.0,83.5,16,11,Superestimado pela crítica
+Colman Domingo,Colman Domingo,Melhor Ator,72,6.0,46,60.0,12.0,12.0,66.0,23,4,Consensual
+Ralph Fiennes,Ralph Fiennes,Melhor Ator,93,7.6,85,76.0,17.0,17.0,84.5,16,11,Superestimado pela crítica
+Sebastian Stan,Sebastian Stan,Melhor Ator,75,6.6,52,66.0,9.0,9.0,70.5,25,2,Consensual
+Cynthia Erivo,Cynthia Erivo,Melhor Atriz,88,7.6,95,76.0,12.0,12.0,82.0,23,4,Consensual
+Karla Sofía Gascón,Karla Sofía Gascón,Melhor Atriz,78,5.7,24,57.0,21.0,21.0,67.5,3,24,Superestimado pela crítica
+Mikey Madison,Mikey Madison,Melhor Atriz,95,7.7,81,77.0,18.0,18.0,86.0,10,16,Superestimado pela crítica
+Demi Moore,Demi Moore,Melhor Atriz,90,7.2,70,72.0,18.0,18.0,81.0,10,16,Superestimado pela crítica
+Fernanda Torres,Fernanda Torres,Melhor Atriz,97,7.8,88,78.0,19.0,19.0,87.5,6,21,Superestimado pela crítica

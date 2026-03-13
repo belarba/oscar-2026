@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar 2025 — Os dados por trás da 97ª cerimônia</title>
+    <meta name="description" content="Análise de dados do Oscar 2025: Crítica vs Público e o Brasil no Oscar em 50 anos de história.">
+    <meta property="og:title" content="Oscar 2025 — Os dados por trás da 97ª cerimônia">
+    <meta property="og:description" content="Crítica vs Público: os indicados que dividem opiniões. O Brasil no Oscar: 50 anos de história.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+    <style>
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --bg-chart: #0f1a30;
+            --text-primary: #f0e6cc;
+            --text-secondary: #8a7a5a;
+            --text-muted: #6b6150;
+            --accent: #c9a84c;
+            --accent-light: #e8d48b;
+            --accent-dark: #8b6914;
+            --accent-glow: rgba(201, 168, 76, 0.4);
+            --border: rgba(201, 168, 76, 0.1);
+            --border-strong: rgba(201, 168, 76, 0.25);
+            --red: #cd5c5c;
+            --red-dark: #8b0000;
+            --green: #6bbd6b;
+            --plotly-bg: #0f1a30;
+            --plotly-grid: rgba(201, 168, 76, 0.08);
+            --plotly-text: #8a7a5a;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #fffef8;
+            --bg-secondary: #faf6e8;
+            --bg-card: #f5f0e0;
+            --bg-chart: #f5f0e0;
+            --text-primary: #2a2318;
+            --text-secondary: #6b5d3e;
+            --text-muted: #a08c50;
+            --accent: #8b6914;
+            --accent-light: #b8960c;
+            --accent-dark: #6b5100;
+            --accent-glow: rgba(139, 105, 20, 0.2);
+            --border: rgba(139, 105, 20, 0.12);
+            --border-strong: rgba(139, 105, 20, 0.25);
+            --red: #8b0000;
+            --red-dark: #8b0000;
+            --green: #2e7d32;
+            --plotly-bg: #f5f0e0;
+            --plotly-grid: rgba(139, 105, 20, 0.1);
+            --plotly-text: #6b5d3e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            border-bottom: 2px solid var(--accent);
+            position: relative;
+        }
+
+        [data-theme="dark"] .hero,
+        :root:not([data-theme="light"]) .hero {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2a1f0a 100%);
+        }
+
+        [data-theme="light"] .hero {
+            background: linear-gradient(135deg, #fffef5 0%, #f5ecd0 50%, #e8dbb5 100%);
+        }
+
+        .hero-emoji { font-size: 3.5rem; margin-bottom: 0.5rem; }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 0.4rem;
+            letter-spacing: 1px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: var(--border-strong);
+            border: 1px solid var(--border-strong);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-glow);
+            transform: scale(1.1);
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-pill {
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: var(--text-muted);
+            background: var(--border);
+        }
+
+        .nav-pill.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        .nav-pill:hover:not(.active) {
+            border-color: var(--border-strong);
+            color: var(--accent);
+        }
+
+        /* Sections */
+        .section {
+            padding: 2.5rem 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0.3rem 0;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Chart containers */
+        .chart-container {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Highlight cards */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .highlight-card:hover { transform: translateY(-2px); }
+
+        .highlight-card.divisivo { border-left-color: var(--red); }
+        .highlight-card.consensual { border-left-color: var(--green); }
+        .highlight-card.superestimado { border-left-color: var(--accent-light); }
+        .highlight-card.subestimado { border-left-color: var(--red-dark); }
+
+        .highlight-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-card.consensual .highlight-label { color: var(--green); }
+        .highlight-card.divisivo .highlight-label { color: var(--red); }
+        .highlight-card.superestimado .highlight-label { color: var(--accent-light); }
+        .highlight-card.subestimado .highlight-label { color: var(--red-dark); }
+
+        .highlight-filme { font-size: 1.1rem; font-weight: 700; }
+
+        .highlight-detail {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        /* Brasil timeline extras */
+        .brasil-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .brasil-stat {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .brasil-stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .brasil-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .footer-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Hidden section */
+        .section-content { display: none; }
+        .section-content.active { display: block; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero-title { font-size: 1.4rem; letter-spacing: 1.5px; }
+            .section { padding: 1.5rem 1rem; }
+            .section-title { font-size: 1.3rem; }
+            .highlights { grid-template-columns: 1fr; }
+            .theme-toggle { top: 0.8rem; right: 0.8rem; width: 35px; height: 35px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <header class="hero">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema" id="themeBtn">🌙</button>
+        <div class="hero-emoji">🏆</div>
+        <h1 class="hero-title">Oscar 2025</h1>
+        <p class="hero-subtitle">Os dados por trás da 97ª cerimônia</p>
+    </header>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <a class="nav-pill active" onclick="showSection('critica')" id="nav-critica">Crítica vs Público</a>
+        <a class="nav-pill" onclick="showSection('brasil')" id="nav-brasil">Brasil no Oscar</a>
+    </nav>
+
+    <!-- Seção 1: Crítica vs Público -->
+    <div class="section-content active" id="section-critica">
+        <div class="section">
+            <div class="section-label">Entregável 1</div>
+            <h2 class="section-title">Crítica vs Público</h2>
+            <p class="section-desc">Os indicados que dividem opiniões — cruzando notas do Rotten Tomatoes com IMDb</p>
+
+            <div class="chart-container">
+                <div id="scatter-chart"></div>
+            </div>
+
+            <div class="highlights">
+                {{ highlights_html }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção 2: Brasil no Oscar -->
+    <div class="section-content" id="section-brasil">
+        <div class="section">
+            <div class="section-label">Entregável 2</div>
+            <h2 class="section-title">O Brasil no Oscar</h2>
+            <p class="section-desc">50 anos de história — todas as submissões brasileiras ao prêmio de Melhor Filme Internacional</p>
+
+            <div class="chart-container">
+                <div id="brasil-chart"></div>
+            </div>
+
+            <div class="brasil-stats">
+                {{ brasil_stats_html }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">
+            Dados: Wikipedia, IMDb, Rotten Tomatoes<br>
+            Feito com Python, Plotly e ☕ — Oscar 2025, 97ª cerimônia
+        </p>
+    </footer>
+
+    <!-- Plotly chart data -->
+    {{ scatter_chart_js }}
+    {{ brasil_chart_js }}
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            document.getElementById('themeBtn').textContent = next === 'light' ? '☀️' : '🌙';
+            localStorage.setItem('oscar-theme', next);
+            updatePlotlyTheme(next);
+        }
+
+        function updatePlotlyTheme(theme) {
+            const isDark = theme !== 'light';
+            const layoutUpdate = {
+                paper_bgcolor: isDark ? '#1a1a1a' : '#f5f0e0',
+                plot_bgcolor: isDark ? '#0f1a30' : '#f5f0e0',
+                font: { color: isDark ? '#8a7a5a' : '#6b5d3e' },
+                'xaxis.gridcolor': isDark ? 'rgba(201,168,76,0.08)' : 'rgba(139,105,20,0.1)',
+                'yaxis.gridcolor': isDark ? 'rgba(201,168,76,0.08)' : 'rgba(139,105,20,0.1)',
+                'xaxis.color': isDark ? '#8a7a5a' : '#6b5d3e',
+                'yaxis.color': isDark ? '#8a7a5a' : '#6b5d3e',
+            };
+            Plotly.relayout('scatter-chart', layoutUpdate);
+            Plotly.relayout('brasil-chart', layoutUpdate);
+        }
+
+        // Section toggle
+        function showSection(name) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+            document.getElementById('section-' + name).classList.add('active');
+            document.getElementById('nav-' + name).classList.add('active');
+        }
+
+        // Restore theme
+        const saved = localStorage.getItem('oscar-theme');
+        if (saved) {
+            document.documentElement.setAttribute('data-theme', saved);
+            document.getElementById('themeBtn').textContent = saved === 'light' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>
